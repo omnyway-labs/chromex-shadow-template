@@ -11,6 +11,6 @@
          seancorfield/clj-new      {:mvn/version "RELEASE"}
          binaryage/devtools        {:mvn/version "RELEASE"}
          binaryage/chromex         {:git/url "https://github.com/binaryage/chromex"
-                                    :sha "04d2744549214b5cba04002b6875bdf59f9d88b6"}
+                                    :sha "af0feed2b1218e76ebdab1fa309c81ff72ece13f"}
          ; ---
          thheller/shadow-cljs      {:mvn/version "RELEASE"}}}
