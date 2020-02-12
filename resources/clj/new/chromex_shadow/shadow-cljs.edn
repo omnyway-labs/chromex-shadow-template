@@ -1,0 +1,18 @@
+{:deps   true
+ :builds {:extension
+
+          {:target           :chrome-extension
+           :extension-dir    "resources/unpacked"
+           :manifest-file    "resources/unpacked/manifest.edn"
+           :compiler-options {; https://github.com/google/closure-compiler/issues/1704
+                              :closure-output-charset "US-ASCII"
+                              ; we need to fully inline source maps to avoid devtools security restrictions of loading .map
+                              ; files via chrome-extension://<extension-id>/out/cljs-runtime/goog.debug.error.js.map urls
+                              :source-map-inline      true}
+           :outputs          {:background     {:output-type :chrome/background
+                                               :entries     [{{name}}.background]}
+                              :content-script {:output-type    :chrome/content-script
+                                               :chrome/options {:matches ["<all_urls>"]
+                                                                :run-at  "document_end"}
+                                               :entries        [{{name}}.content-script]}
+                              :popup          {:entries [{{name}}.popup]}}}}}
