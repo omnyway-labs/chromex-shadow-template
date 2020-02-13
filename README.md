@@ -1,7 +1,9 @@
 # chromex-shadow-template
 
 Use `seancorfield/clj-new` to create a basic project for creating a Chrome
-Extension using Chromex, Clojurescript, and Shadow-Cljs
+Extension using [Chromex](https://github.com/binaryage/chromex), Clojurescript, and Shadow-Cljs. 
+
+It is based on the example code from [Chromex Examples](https://github.com/binaryage/chromex/tree/master/examples/shadow)
 
 ## Usage
 
@@ -86,6 +88,8 @@ code will be `src/omnyway_labs/test_project/*.cljs`
 [Isaac "Icylisper" Praveen](https://github.com/icylisper)
 
 [Robert J. Berger](https://github.com/rberger)
+
+Based on [Chromex Example Shadow](https://github.com/binaryage/chromex/tree/master/examples/shadow) by [Antonin Hildebrand (darwin)](Antonin Hildebrand)
 
 ## License
 MIT License
