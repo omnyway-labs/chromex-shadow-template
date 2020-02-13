@@ -3,7 +3,10 @@
 Use `seancorfield/clj-new` to create a basic project for creating a Chrome
 Extension using [Chromex](https://github.com/binaryage/chromex), Clojurescript, and Shadow-Cljs. 
 
-It is based on the example code from [Chromex Examples](https://github.com/binaryage/chromex/tree/master/examples/shadow)
+It is based on the example code from [Chromex
+Examples](https://github.com/binaryage/chromex/tree/master/examples/shadow). See
+the [README Template](https://github.com/omnyway-labs/chromex-shadow-template/blob/master/resources/clj/new/chromex_shadow_template/readme.md)
+for more info on what the generated project has.
 
 ## Usage
 
@@ -89,7 +92,7 @@ code will be `src/omnyway_labs/test_project/*.cljs`
 
 [Robert J. Berger](https://github.com/rberger)
 
-Based on [Chromex Example Shadow](https://github.com/binaryage/chromex/tree/master/examples/shadow) by [Antonin Hildebrand (darwin)](Antonin Hildebrand)
+Based on [Chromex Example Shadow](https://github.com/binaryage/chromex/tree/master/examples/shadow) by [Antonin Hildebrand (darwin)](https://github.com/darwin)
 
 ## License
 MIT License
