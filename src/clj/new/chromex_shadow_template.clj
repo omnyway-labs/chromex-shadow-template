@@ -11,8 +11,8 @@
         group-in-ns? (features "+group-in-ns")
         base-data (project-data name)
         namespace (if-not group-in-ns?
-                    {:namespace (sanitize (project-name name))}
-                    {:namespace (sanitize (sanitize-ns name))})
+                    {:namespace (project-name name)}
+                    {:namespace (sanitize-ns name)})
         nested-dirs (if-not group-in-ns? {:nested-dirs (name-to-path (:namespace namespace))})
         data   (merge base-data namespace nested-dirs)]
     (println "Generating a project called"
