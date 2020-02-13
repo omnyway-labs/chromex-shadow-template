@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>chromex-shadow</groupId>
+  <groupId>chromex-shadow-template</groupId>
   <artifactId>clj-template</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <name>chromex-shadow</name>
+  <name>chromex-shadow-template</name>
   <description>FIXME: my new template.</description>
-  <url>https://github.com/omnyway-labs/chromex-shadow</url>
+  <url>https://github.com/omnyway-labs/chromex-shadow-template</url>
   <licenses>
     <license>
       <name>Eclipse Public License</name>
@@ -19,9 +19,9 @@
     </developer>
   </developers>
   <scm>
-    <url>https://github.com/omnyway-labs/chromex-shadow</url>
-    <connection>scm:git:git://github.com/omnyway-labs/chromex-shadow.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/omnyway-labs/chromex-shadow.git</developerConnection>
+    <url>https://github.com/omnyway-labs/chromex-shadow-template</url>
+    <connection>scm:git:git://github.com/omnyway-labs/chromex-shadow-template.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/omnyway-labs/chromex-shadow-template.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
   <dependencies>

@@ -1,22 +1,29 @@
-(ns clj.new.chromex-shadow
+(ns clj.new.chromex-shadow-template
   "Generate a chromex / shadow-cljs chrome extension project."
-  (:require [clj.new.templates :refer [renderer project-data ->files]]))
+  (:require [clj.new.templates :refer [renderer project-data project-name sanitize sanitize-ns name-to-path ->files]]))
 
-(defn chromex-shadow
+(defn chromex-shadow-template
   "Generate a chromex based chrome extension"
-  [name]
-  (let [render (renderer "chromex-shadow")
-        data   (project-data name)]
+  [name & args]
+  (let [features (into #{} args)
+        render (renderer "chromex-shadow-template")
+        group-in-ns? (features "+group-in-ns")
+        base-data (project-data name)
+        namespace (if-not group-in-ns?
+                    {:namespace (sanitize (project-name name))}
+                    {:namespace (sanitize (sanitize-ns name))})
+        nested-dirs (if-not group-in-ns? {:nested-dirs (name-to-path (:namespace namespace))})
+        data   (merge base-data namespace nested-dirs)]
     (println "Generating a project called"
              (project-name name)
-             "based on the 'amplitude' template.")
+             "based on the 'chromex-shadow' template.")
     (println "Data: " data)
     (->files data
              [".gitignore" (render "gitignore" data)]
              ["deps.edn" (render "deps.edn" data)]
              ["LICENSE" (render "LICENSE" data)]
              ["package.json" (render "package.json" data)]
-             ["readme.md" (render "readme.md" data)]
+             ["README.md" (render "README.md" data)]
              ["shadow-cljs.edn" (render "shadow-cljs.edn" data)]
 
              ["scripts/_config.sh" (render "scripts/_config.sh")]
@@ -33,19 +40,19 @@
              ["resources/unpacked/images/icon48.png" (render "resources/unpacked/images/icon48.png")]
 
              ["src/background/{{nested-dirs}}/background.cljs"
-              (render "src/background/chromex_shadow/background.cljs")]
+              (render "src/background/chromex_shadow_template/background.cljs" data)]
              ["src/background/{{nested-dirs}}/background/core.cljs"
-              (render "src/background/chromex_shadow/background/core.cljs")]
+              (render "src/background/chromex_shadow_template/background/core.cljs" data)]
              ["src/background/{{nested-dirs}}/background/storage.cljs"
-              (render "src/background/chromex_shadow/background/storage.cljs")]
+              (render "src/background/chromex_shadow_template/background/storage.cljs" data)]
              ["src/content_script/{{nested-dirs}}/content_script.cljs"
-              (render "src/content_script/chromex_shadow/content_script.cljs")]
+              (render "src/content_script/chromex_shadow_template/content_script.cljs" data)]
              ["src/content_script/{{nested-dirs}}/content_script/core.cljs"
-              (render "src/content_script/chromex_shadow/content_script/core.cljs")]
+              (render "src/content_script/chromex_shadow_template/content_script/core.cljs" data)]
              ["src/popup/{{nested-dirs}}/popup.cljs"
-              (render "src/popup/chromex_shadow/popup.cljs")]
+              (render "src/popup/chromex_shadow_template/popup.cljs" data)]
              ["src/popup/{{nested-dirs}}/popup/core.cljs"
-              (render "src/popup/chromex_shadow/popup/core.cljs")]
+              (render "src/popup/chromex_shadow_template/popup/core.cljs" data)]
 
 
              ;; These will go away once these hacks are no longer needed
