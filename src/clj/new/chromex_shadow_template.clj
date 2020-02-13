@@ -1,12 +1,13 @@
 (ns clj.new.chromex-shadow-template
   "Generate a chromex / shadow-cljs chrome extension project."
-  (:require [clj.new.templates :refer [renderer project-data project-name sanitize sanitize-ns name-to-path ->files]]))
+  (:require [clj.new.templates :refer [renderer project-data project-name sanitize sanitize-ns name-to-path raw-resourcer ->files]]))
 
 (defn chromex-shadow-template
   "Generate a chromex based chrome extension"
   [name & args]
   (let [features (into #{} args)
         render (renderer "chromex-shadow-template")
+        raw (raw-resourcer "chromex-shadow-template")
         group-in-ns? (features "+group-in-ns")
         base-data (project-data name)
         namespace (if-not group-in-ns?
@@ -32,12 +33,12 @@
              ["scripts/package.sh" (render "scripts/package.sh" data)]
 
              ["resources/unpacked/manifest.edn" (render "resources/unpacked/manifest.edn" data)]
-             ["resources/unpacked/popup.html" (render "resources/unpacked/popup.html")]
-             ["resources/unpacked/images/icon128.png" (render "resources/unpacked/images/icon128.png")]
-             ["resources/unpacked/images/icon16.png" (render "resources/unpacked/images/icon16.png")]
-             ["resources/unpacked/images/icon19.png" (render "resources/unpacked/images/icon19.png")]
-             ["resources/unpacked/images/icon38.png" (render "resources/unpacked/images/icon38.png")]
-             ["resources/unpacked/images/icon48.png" (render "resources/unpacked/images/icon48.png")]
+             ["resources/unpacked/popup.html" (raw "resources/unpacked/popup.html")]
+             ["resources/unpacked/images/icon128.png" (raw "resources/unpacked/images/icon128.png")]
+             ["resources/unpacked/images/icon16.png" (raw "resources/unpacked/images/icon16.png")]
+             ["resources/unpacked/images/icon19.png" (raw "resources/unpacked/images/icon19.png")]
+             ["resources/unpacked/images/icon38.png" (raw "resources/unpacked/images/icon38.png")]
+             ["resources/unpacked/images/icon48.png" (raw "resources/unpacked/images/icon48.png")]
 
              ["src/background/{{nested-dirs}}/background.cljs"
               (render "src/background/chromex_shadow_template/background.cljs" data)]
@@ -57,10 +58,10 @@
 
              ;; These will go away once these hacks are no longer needed
              ["src/shadow_hacks/shadow/build/compiler.clj"
-              (render "src/shadow_hacks/shadow/build/compiler.clj")]
+              (raw "src/shadow_hacks/shadow/build/compiler.clj")]
              ["src/shadow_hacks/shadow/build/output.clj"
-              (render "src/shadow_hacks/shadow/build/output.clj")]
+              (raw "src/shadow_hacks/shadow/build/output.clj")]
              ["src/shadow_hacks/shadow/build/targets/chrome_extension.clj"
-              (render "src/shadow_hacks/shadow/build/targets/chrome_extension.clj")]
+              (raw "src/shadow_hacks/shadow/build/targets/chrome_extension.clj")]
              ["src/shadow_hacks/shadow/build/targets/react_native.clj"
-              (render "src/shadow_hacks/shadow/build/targets/react_native.clj")])))
+              (raw "src/shadow_hacks/shadow/build/targets/react_native.clj")])))
